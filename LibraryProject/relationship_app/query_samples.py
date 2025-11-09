@@ -1,30 +1,20 @@
 """Sample ORM queries for relationship_app."""
 
-from typing import List, Optional
+from typing import Optional
 
-from .models import Author, Library, Librarian
-
-
-def books_by_author(author_name: str) -> List[str]:
-    """Return a list of book titles for the given author name."""
-    author: Optional[Author] = Author.objects.filter(name=author_name).first()
-    if not author:
-        return []
-    return list(author.books.values_list('title', flat=True))
+from .models import Book, Librarian
 
 
-def books_in_library(library_name: str) -> List[str]:
-    """Return a list of book titles available in the named library."""
-    library: Optional[Library] = Library.objects.filter(name=library_name).first()
-    if not library:
-        return []
-    return list(library.books.values_list('title', flat=True))
+def get_books_by_author(author_name: str):
+    """Query all books written by the specified author."""
+    return Book.objects.filter(author__name=author_name)
 
 
-def librarian_for_library(library_name: str) -> Optional[Librarian]:
-    """Return the librarian for the given library name, if present."""
-    library: Optional[Library] = Library.objects.filter(name=library_name).first()
-    if not library:
-        return None
-    return getattr(library, 'librarian', None)
+def get_books_in_library(library_name: str):
+    """List all books that belong to the specified library."""
+    return Book.objects.filter(libraries__name=library_name)
 
+
+def get_librarian_for_library(library_name: str) -> Optional[Librarian]:
+    """Retrieve the librarian responsible for the specified library."""
+    return Librarian.objects.filter(library__name=library_name).first()

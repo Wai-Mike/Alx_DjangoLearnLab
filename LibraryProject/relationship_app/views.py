@@ -14,7 +14,7 @@ from .models import Book, Library
 class BookForm(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ['title', 'author', 'publication_year']
+        fields = ['title', 'author']
 
 
 def list_books(request):
