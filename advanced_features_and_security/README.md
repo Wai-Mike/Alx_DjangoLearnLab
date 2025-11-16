@@ -23,10 +23,17 @@ Permissions and Groups
 ----------------------
 - `bookshelf.models.Book` defines Meta permissions: `can_view`, `can_create`, `can_edit`, `can_delete`
 - Views use `@permission_required("bookshelf.<perm>", raise_exception=True)` to enforce access
-- Create groups in admin:
+- Create groups in admin, or run the management command below:
   - Viewers: `can_view`
   - Editors: `can_view`, `can_create`, `can_edit`
   - Admins: all permissions or superuser
+
+Create default groups via management command:
+
+```
+python manage.py migrate
+python manage.py create_default_groups
+```
 
 Security Best Practices
 -----------------------
