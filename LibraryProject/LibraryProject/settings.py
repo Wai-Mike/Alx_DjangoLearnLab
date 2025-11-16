@@ -10,6 +10,12 @@ SECRET_KEY = "dev-insecure-key-change-in-production"
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
+# Ensure SecurityMiddleware is enabled to implement secure headers
+MIDDLEWARE = [
+	"django.middleware.security.SecurityMiddleware",
+	"django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
 # Security headers and HTTPS settings required by the checks
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
