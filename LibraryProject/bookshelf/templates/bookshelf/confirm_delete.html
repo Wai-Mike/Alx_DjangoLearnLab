@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Delete Book</title>
+	<style>
+		body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; }
+		button { margin-top: 1rem; padding: .5rem 1rem; }
+	</style>
+</head>
+<body>
+	<h1>Delete Book</h1>
+	<p>Are you sure you want to delete "<strong>{{ book.title }}</strong>" by {{ book.author }}?</p>
+	<form method="post">
+		{% csrf_token %}
+		<button type="submit">Confirm delete</button>
+	</form>
+	<p><a href="{% url 'book_list' %}">Cancel</a></p>
+</body>
+</html>
+
+
