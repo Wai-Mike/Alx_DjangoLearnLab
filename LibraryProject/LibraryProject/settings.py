@@ -27,6 +27,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+	"bookshelf.middleware.ContentSecurityPolicyMiddleware",
 ]
 
 ROOT_URLCONF = "LibraryProject.urls"
@@ -87,4 +88,11 @@ SECURE_HSTS_PRELOAD = True
 # Use custom user model in this project path as well
 AUTH_USER_MODEL = "bookshelf.User"
 
+# Minimal CSP policy configurable via middleware
+CSP_DEFAULT_SRC = "'self'"
+CSP_SCRIPT_SRC = "'self'"
+CSP_STYLE_SRC = "'self'"
+CSP_IMG_SRC = "'self' data:"
+CSP_FONT_SRC = "'self'"
+CSP_CONNECT_SRC = "'self'"
 
