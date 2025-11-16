@@ -15,6 +15,8 @@ class CustomUser(AbstractUser):
 	date_of_birth = models.DateField(null=True, blank=True)
 	profile_photo = models.ImageField(upload_to=user_profile_upload_path, null=True, blank=True)
 
+	objects = UserManager()
+
 	def __str__(self) -> str:
 		return self.username
 

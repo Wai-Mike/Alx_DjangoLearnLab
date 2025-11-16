@@ -33,4 +33,7 @@ SECURE_HSTS_PRELOAD = True
 # Honor X-Forwarded-Proto when behind a proxy/load balancer
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
+# Configure custom user model for this project path
+AUTH_USER_MODEL = "bookshelf.CustomUser"
+
 
