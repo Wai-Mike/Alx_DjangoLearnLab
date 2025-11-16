@@ -2,7 +2,7 @@ from __future__ import annotations
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpRequest, HttpResponse
-from .forms import BookForm
+from .forms import BookForm, ExampleForm
 from .models import Book
 
 

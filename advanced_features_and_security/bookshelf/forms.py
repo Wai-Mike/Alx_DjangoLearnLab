@@ -8,3 +8,10 @@ class BookForm(forms.ModelForm):
         fields = ["title", "author", "published_on"]
 
 
+class ExampleForm(forms.Form):
+    """
+    Simple example form to demonstrate CSRF usage and safe input handling.
+    """
+    name = forms.CharField(max_length=100, label="Name")
+    email = forms.EmailField(label="Email")
+
