@@ -1,7 +1,7 @@
 from __future__ import annotations
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from .managers import UserManager
+from .managers import CustomUserManager
 
 
 def user_profile_upload_path(instance: "User", filename: str) -> str:
@@ -15,7 +15,7 @@ class CustomUser(AbstractUser):
     date_of_birth = models.DateField(null=True, blank=True)
     profile_photo = models.ImageField(upload_to=user_profile_upload_path, null=True, blank=True)
 
-    objects = UserManager()
+    objects = CustomUserManager()
 
     def __str__(self) -> str:
         return self.username
